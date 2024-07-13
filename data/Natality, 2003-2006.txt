@@ -1,0 +1,63 @@
+"Notes"	"Year"	"Year Code"	"Age of Mother 9"	"Age of Mother 9 Code"	Births
+	"2003"	"2003"	"Under 15 years"	"15"	6661
+	"2003"	"2003"	"15-19 years"	"15-19"	414580
+	"2003"	"2003"	"20-24 years"	"20-24"	1032305
+	"2003"	"2003"	"25-29 years"	"25-29"	1086366
+	"2003"	"2003"	"30-34 years"	"30-34"	975546
+	"2003"	"2003"	"35-39 years"	"35-39"	467642
+	"2003"	"2003"	"40-44 years"	"40-44"	101005
+	"2003"	"2003"	"45-49 years"	"45-49"	5522
+	"2003"	"2003"	"50 years and over"	"50+"	323
+"Total"	"2003"	"2003"			4089950
+	"2004"	"2004"	"Under 15 years"	"15"	6781
+	"2004"	"2004"	"15-19 years"	"15-19"	415262
+	"2004"	"2004"	"20-24 years"	"20-24"	1034454
+	"2004"	"2004"	"25-29 years"	"25-29"	1104485
+	"2004"	"2004"	"30-34 years"	"30-34"	965663
+	"2004"	"2004"	"35-39 years"	"35-39"	475606
+	"2004"	"2004"	"40-44 years"	"40-44"	103679
+	"2004"	"2004"	"45-49 years"	"45-49"	5748
+	"2004"	"2004"	"50 years and over"	"50+"	374
+"Total"	"2004"	"2004"			4112052
+	"2005"	"2005"	"Under 15 years"	"15"	6722
+	"2005"	"2005"	"15-19 years"	"15-19"	414593
+	"2005"	"2005"	"20-24 years"	"20-24"	1040388
+	"2005"	"2005"	"25-29 years"	"25-29"	1131596
+	"2005"	"2005"	"30-34 years"	"30-34"	950691
+	"2005"	"2005"	"35-39 years"	"35-39"	483156
+	"2005"	"2005"	"40-44 years"	"40-44"	104667
+	"2005"	"2005"	"45-49 years"	"45-49"	6119
+	"2005"	"2005"	"50 years and over"	"50+"	417
+"Total"	"2005"	"2005"			4138349
+	"2006"	"2006"	"Under 15 years"	"15"	6396
+	"2006"	"2006"	"15-19 years"	"15-19"	435436
+	"2006"	"2006"	"20-24 years"	"20-24"	1080437
+	"2006"	"2006"	"25-29 years"	"25-29"	1181899
+	"2006"	"2006"	"30-34 years"	"30-34"	950258
+	"2006"	"2006"	"35-39 years"	"35-39"	498616
+	"2006"	"2006"	"40-44 years"	"40-44"	105539
+	"2006"	"2006"	"45-49 years"	"45-49"	6480
+	"2006"	"2006"	"50 years and over"	"50+"	494
+"Total"	"2006"	"2006"			4265555
+"Total"					16605906
+"---"
+"Dataset: Natality, 2003-2006"
+"Query Parameters:"
+"Group By: Year; Age of Mother 9"
+"Show Totals: True"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Calculate Rates Per: 1,000"
+"Population Option: No populations shown because rates were not selected."
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/Natality.html for more information."
+"---"
+"Query Date: Jul 13, 2024 4:25:06 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics"
+"System, Natality on CDC WONDER Online Database. Data are from the Natality Records 2003-2006, as compiled from data provided by"
+"the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed at"
+"http://wonder.cdc.gov/natality-v2006.html on Jul 13, 2024 4:25:06 PM"
+"---"
+Caveats:
+"1. Each birth record represents one liveborn infant."

@@ -1,0 +1,104 @@
+"Notes"	"Year"	"Year Code"	"Age of Mother"	"Age of Mother Code"	Births
+	"1995"	"1995"	"Under 15 years"	"15"	12242
+	"1995"	"1995"	"15-19 years"	"15-19"	499873
+	"1995"	"1995"	"20-24 years"	"20-24"	965547
+	"1995"	"1995"	"25-29 years"	"25-29"	1063539
+	"1995"	"1995"	"30-34 years"	"30-34"	904666
+	"1995"	"1995"	"35-39 years"	"35-39"	383745
+	"1995"	"1995"	"40-44 years"	"40-44"	67250
+	"1995"	"1995"	"45-49 years"	"45-49"	2727
+"Total"	"1995"	"1995"			3899589
+	"1996"	"1996"	"Under 15 years"	"15"	11148
+	"1996"	"1996"	"15-19 years"	"15-19"	491577
+	"1996"	"1996"	"20-24 years"	"20-24"	945210
+	"1996"	"1996"	"25-29 years"	"25-29"	1071287
+	"1996"	"1996"	"30-34 years"	"30-34"	897913
+	"1996"	"1996"	"35-39 years"	"35-39"	399510
+	"1996"	"1996"	"40-44 years"	"40-44"	71804
+	"1996"	"1996"	"45-49 years"	"45-49"	3045
+"Total"	"1996"	"1996"			3891494
+	"1997"	"1997"	"Under 15 years"	"15"	10121
+	"1997"	"1997"	"15-19 years"	"15-19"	483220
+	"1997"	"1997"	"20-24 years"	"20-24"	942048
+	"1997"	"1997"	"25-29 years"	"25-29"	1069436
+	"1997"	"1997"	"30-34 years"	"30-34"	886798
+	"1997"	"1997"	"35-39 years"	"35-39"	409710
+	"1997"	"1997"	"40-44 years"	"40-44"	76084
+	"1997"	"1997"	"45-49 years"	"45-49"	3333
+	"1997"	"1997"	"50 years and over"	"50+"	144
+"Total"	"1997"	"1997"			3880894
+	"1998"	"1998"	"Under 15 years"	"15"	9462
+	"1998"	"1998"	"15-19 years"	"15-19"	484895
+	"1998"	"1998"	"20-24 years"	"20-24"	965122
+	"1998"	"1998"	"25-29 years"	"25-29"	1083010
+	"1998"	"1998"	"30-34 years"	"30-34"	889365
+	"1998"	"1998"	"35-39 years"	"35-39"	424890
+	"1998"	"1998"	"40-44 years"	"40-44"	81027
+	"1998"	"1998"	"45-49 years"	"45-49"	3624
+	"1998"	"1998"	"50 years and over"	"50+"	158
+"Total"	"1998"	"1998"			3941553
+	"1999"	"1999"	"Under 15 years"	"15"	9054
+	"1999"	"1999"	"15-19 years"	"15-19"	476050
+	"1999"	"1999"	"20-24 years"	"20-24"	981929
+	"1999"	"1999"	"25-29 years"	"25-29"	1078252
+	"1999"	"1999"	"30-34 years"	"30-34"	892400
+	"1999"	"1999"	"35-39 years"	"35-39"	434294
+	"1999"	"1999"	"40-44 years"	"40-44"	83090
+	"1999"	"1999"	"45-49 years"	"45-49"	4174
+	"1999"	"1999"	"50 years and over"	"50+"	174
+"Total"	"1999"	"1999"			3959417
+	"2000"	"2000"	"Under 15 years"	"15"	8519
+	"2000"	"2000"	"15-19 years"	"15-19"	468990
+	"2000"	"2000"	"20-24 years"	"20-24"	1017806
+	"2000"	"2000"	"25-29 years"	"25-29"	1087547
+	"2000"	"2000"	"30-34 years"	"30-34"	929278
+	"2000"	"2000"	"35-39 years"	"35-39"	452057
+	"2000"	"2000"	"40-44 years"	"40-44"	90013
+	"2000"	"2000"	"45-49 years"	"45-49"	4349
+	"2000"	"2000"	"50 years and over"	"50+"	255
+"Total"	"2000"	"2000"			4058814
+	"2001"	"2001"	"Under 15 years"	"15"	7781
+	"2001"	"2001"	"15-19 years"	"15-19"	445944
+	"2001"	"2001"	"20-24 years"	"20-24"	1021627
+	"2001"	"2001"	"25-29 years"	"25-29"	1058265
+	"2001"	"2001"	"30-34 years"	"30-34"	942697
+	"2001"	"2001"	"35-39 years"	"35-39"	451723
+	"2001"	"2001"	"40-44 years"	"40-44"	92813
+	"2001"	"2001"	"45-49 years"	"45-49"	4844
+	"2001"	"2001"	"50 years and over"	"50+"	239
+"Total"	"2001"	"2001"			4025933
+	"2002"	"2002"	"Under 15 years"	"15"	7315
+	"2002"	"2002"	"15-19 years"	"15-19"	425493
+	"2002"	"2002"	"20-24 years"	"20-24"	1022106
+	"2002"	"2002"	"25-29 years"	"25-29"	1060391
+	"2002"	"2002"	"30-34 years"	"30-34"	951219
+	"2002"	"2002"	"35-39 years"	"35-39"	453927
+	"2002"	"2002"	"40-44 years"	"40-44"	95788
+	"2002"	"2002"	"45-49 years"	"45-49"	5224
+	"2002"	"2002"	"50 years and over"	"50+"	263
+"Total"	"2002"	"2002"			4021726
+"Total"					31679420
+"---"
+"Dataset: Natality, 1995-2002"
+"Query Parameters:"
+"Group By: Year; Age of Mother"
+"Show Totals: True"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/Natality.html for more information."
+"---"
+"Query Date: Jul 13, 2024 4:26:14 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. National Vital Statistics"
+"System, Natality on CDC WONDER Online Database. Data are from the Natality Records 1995-2002, as compiled from data provided by"
+"the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed at"
+"http://wonder.cdc.gov/natality-v2002.html on Jul 13, 2024 4:26:14 PM"
+"---"
+Messages:
+"1. Rows with zero Births are hidden. Use Quick Options above to show zero rows."
+"---"
+Caveats:
+"1. Each birth record represents one liveborn infant."
+"2. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/Natality.html#Assurance of Confidentiality."
