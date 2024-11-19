@@ -1,4 +1,19 @@
 
+read.csv(here("data/prep_pr.csv")) %>%
+  filter(transcat == "msm") %>%
+  select(age, alpha_2022, beta_2022, alpha_2017rr, beta_2017rr) -> prep_priors_msm
+
+read.csv(here("data/prep_pr.csv")) %>%
+  filter(transcat == "women") %>%
+  select(age, alpha_2022, beta_2022, alpha_2017rr, beta_2017rr) -> prep_priors_w
+
+read.csv(here("data/prep_pr.csv")) %>%
+  filter(transcat == "msw") %>%
+  select(age, alpha_2022, beta_2022, alpha_2017rr, beta_2017rr) -> prep_priors_msw
+
+
+read.csv(here("data/birth_rate_wtest.csv")) %>%
+  select(year, age, alpha, beta) -> prg_priors
 
 # adult population 18-64 in 2020
 # based on NHANES PrEP estimates
@@ -23,7 +38,7 @@ n0[,2] <-  0.95*d_popsize_m[2:8,1]
 n0[,3] <-  0.05*d_popsize_m[2:8,1]
 
 d_denom_obs <- 1000
-d_denom <- 1000
+d_denom <- 250
 d_divide <- d_denom_obs/d_denom
 
 risk_pr <- matrix(0, age_groups,gen_groups)

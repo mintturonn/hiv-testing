@@ -80,9 +80,9 @@ ggplot(smr_pred, mapping = aes(x = t)) +
   xlim(c(2000, 2023)) -> p_ever_tested
 
 ggsave(
-  filename = here('output_test/calib_ever_tested-new.png'),
+  filename = here('output/calib_ever_tested.png'),
   plot = p_ever_tested,
-  width = 25,# 15,
+  width = 20,# 15,
   height = 10,
   units = "cm",
   bg = "white",
@@ -130,9 +130,9 @@ ggplot(rbind(smr_testrisk_r1, smr_testrisk_r2), mapping = aes(x = t)) +
   xlim(c(2000, 2023))  -> p_tested_risk
 
 ggsave(
-  filename = here('output_test/calib_tested_risk-new.png'),
+  filename = here('output/calib_tested_risk.png'),
   plot = p_tested_risk,
-  width = 25,# 15,
+  width = 20,# 15,
   height = 10,
   units = "cm",
   bg = "white",
@@ -141,7 +141,7 @@ ggsave(
 # ggplot(smr_recpred, map
 
 #################################
-## RECENTLY TESTED -- by sex only
+## RECENTLY TESTED --
 # nsfg
 testrec_long <- as.vector( t(cbind(matrix(NA, nrow=7, ncol=13), c(tested_recent_f2[,1],rep(NA, 4)), rep(NA, 7),
                                                                 c(tested_recent_f2[,2],rep(NA, 4)), rep(NA, 7),
@@ -179,9 +179,9 @@ smr_recpred <- cbind(as.data.frame( summary(
    xlim(c(2000, 2023)) -> p_rect
  
  ggsave(
-   filename = here('output_test/calib_rec_tested-new.png'),
+   filename = here('output/calib_rec_tested.png'),
    plot = p_rect,
-   width = 25,# 15,
+   width = 20,# 15,
    height = 10,
    units = "cm",
    bg = "white",
@@ -218,7 +218,7 @@ ggplot(smr_pop, mapping = aes(x = t)) +
   xlim(c(2000, 2023)) + ylim(c(0, NA)) -> p_pop
 
 ggsave(
-  filename = here('output_test/pop.png'),
+  filename = here('output/pop.png'),
   plot = p_pop,
   width = 25,
   height = 15,
@@ -230,22 +230,22 @@ ggsave(
 ################################
 
 # MORTALITY
-mort_long <- as.vector( t(cbind(matrix(NA, nrow=7, ncol=1), d_mortality_f[,2:22], matrix(NA, nrow=7, ncol=3),
-                                matrix(NA, nrow=7, ncol=1), d_mortality_m[,2:22], matrix(NA, nrow=7, ncol=3))))
-
-smr_mort <- cbind(as.data.frame( summary(
-  fit_test_model, pars = "deaths", probs = c(0.025, 0.5, 0.975))$summary ) , 
-  age = age_string3, pop =  pop_string3, t= year_string3, data = mort_long)
-colnames(smr_mort) <- make.names(colnames(smr_mort)) # to remove % in the col names
-
-ggplot(smr_mort, mapping = aes(x = t)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill=pop), alpha = 0.35) +
-  geom_line(mapping = aes(x = t, y = X50., color=pop)) + 
-  geom_point(mapping = aes(y = data, color=pop)) +
-  facet_wrap(~pop+age, ncol = age_groups, scales = "free") +
- # ylim(c(0,1)) +
-  labs(x = "Year", y = "Deaths") + theme_minimal() +
-  xlim(c(2000, 2023)) + ylim(c(0, NA)) 
+# mort_long <- as.vector( t(cbind(matrix(NA, nrow=7, ncol=1), d_mortality_f[,2:22], matrix(NA, nrow=7, ncol=3),
+#                                 matrix(NA, nrow=7, ncol=1), d_mortality_m[,2:22], matrix(NA, nrow=7, ncol=3))))
+# 
+# smr_mort <- cbind(as.data.frame( summary(
+#   fit_test_model, pars = "mort", probs = c(0.025, 0.5, 0.975))$summary ) , 
+#   age = age_string3, pop =  pop_string3, t= year_string3, data = mort_long)
+# colnames(smr_mort) <- make.names(colnames(smr_mort)) # to remove % in the col names
+# 
+# ggplot(smr_mort, mapping = aes(x = t)) +
+#   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill=pop), alpha = 0.35) +
+#   geom_line(mapping = aes(x = t, y = X50., color=pop)) + 
+#   geom_point(mapping = aes(y = data, color=pop)) +
+#   facet_wrap(~pop+age, ncol = age_groups, scales = "free") +
+#  # ylim(c(0,1)) +
+#   labs(x = "Year", y = "Deaths") + theme_minimal() +
+#   xlim(c(2000, 2023)) + ylim(c(0, NA)) 
 
 ###############################
 ## DIAGNOSES
@@ -264,7 +264,7 @@ ggplot(smr_diag, mapping = aes(x = t)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill=population), alpha = 0.35) +
   geom_line(mapping = aes(x = t, y = X50., color=population)) + 
   geom_point(mapping = aes(y = data), color="black", shape=21, size=1) +
-  facet_wrap(~population+age, ncol = 5,  scales = "free" ) + #,
+  facet_wrap(~population+age, ncol = 5 ) + #,,  scales = "free"
   #ylim(c(0,0.0005)) +
   labs(x = "Year", y = "HIV diagnoses") + theme_minimal() +
   theme(legend.position = "none",
@@ -272,10 +272,10 @@ ggplot(smr_diag, mapping = aes(x = t)) +
   xlim(c(2000, 2023)) + ylim(c(0, NA))  -> p_dhiv
 
 ggsave(
-  filename = here('output_test/calb_dhiv-new.png'),  # -scalesfree
+  filename = here('output/calb_dhiv.png'),  # -scalesfree
   plot = p_dhiv,
-  width = 15,
-  height = 10,
+  width = 25,
+  height = 20,
   units = "cm",
   bg = "white",
 )
@@ -298,19 +298,18 @@ ggplot(smr_prev, mapping = aes(x = t)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill=population), alpha = 0.35) +
   geom_line(mapping = aes(x = t, y = X50., color=population)) + 
   geom_point(mapping = aes(y = data), color="black", shape=21, size=1) +
-  facet_wrap(~population+age, ncol = 5, scales = "free") + # 
+  facet_wrap(~population+age, ncol = 5) + # , scales = "free", scales = "free"
  # ylim(c(0,0.01)) +
   labs(x = "Year", y = "Known PHIV") + theme_minimal() +
   theme(legend.position = "none",
         axis.text.x=element_text(angle=45, size = 8)) +
   xlim(c(2000, 2023)) + ylim(c(0, NA))   -> p_plhiv
 
-
 ggsave(
-  filename = here('output_test/calb_plhiv-new.png'),
+  filename = here('output/calb_plhiv.png'),
   plot = p_plhiv,
-  width = 15,
-  height = 10,
+  width = 25,
+  height = 20,
   units = "cm",
   bg = "white",
 )
@@ -327,13 +326,14 @@ smr_vols %>%
   geom_pointrange(aes(x=t, y=X50., ymin = X2.5., ymax = X97.5.), color = "red") +
   geom_point(aes(x=c(2019, 2020, 2021), y=c(testvol_2019, testvol_2020, testvol_2021)), color = "black", size=3, shape=21) +
   labs(x = "", y = "Testing volume") + theme_minimal() +
-  scale_x_continuous(limits = c(2018, 2022), breaks = c(2019, 2020, 2021)) + ylim(c(0, NA)) -> p_testvol
+  scale_y_continuous(labels = comma, limits = c(0,NA)) +
+  scale_x_continuous(limits = c(2018, 2022), breaks = c(2019, 2020, 2021)) -> p_testvol
 
 ggsave(
-  filename = here('output_test/calb_tesvol.png'),
+  filename = here('output/calb_tesvol.png'),
   plot = p_testvol,
   width = 10,
-  height = 6,
+  height = 12,
   units = "cm",
   bg = "white",
 )
