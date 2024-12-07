@@ -20,6 +20,7 @@ data {
   // int drec[5];
   // int d_rec_tested[2,5];
   int d_testvol[3];
+  real beta_testcov[2];
   int d_tested_f[ag,9];
   int d_tested_m[ag,9];
   int d_tested_msm[ag-2,5];
@@ -106,6 +107,7 @@ parameters {
   real<lower=0> tst_pwid;
   real<lower=0> tst_prep;
   real<lower=0> mu_test;
+  real<lower=0, upper = 1> coverage;
   real<lower=0> mu_kh[s,5];
   real<lower=0> mu_hd[s,5];
   matrix<lower=0, upper = 0.3>[ag,s] hiv_init;
@@ -548,9 +550,12 @@ for (y in 9:timestep){
 
      
        // [ag,d,s,r,timestep]
-    pr_rec_tested[i,k,y0] = (test_nums[i,k,1,y0]+test_nums[i,k,2,y0])/ (B[i,1,k,1,t1[y0]]+B[i,2,k,1,t1[y0]]+B[i,1,k,2,t1[y0]]+B[i,2,k,2,t1[y0]]+S[i,1,k,1,t1[y0]]+S[i,1,k,2,t1[y0]]);
-    pr_rec_tested_r1[i,k,y0] = (test_nums[i,k,1,y0])/ (B[i,1,k,1,t1[y0]]+B[i,2,k,1,t1[y0]]+S[i,1,k,1,t1[y0]]);
-    pr_rec_tested_r2[i,k,y0] = (test_nums[i,k,2,y0])/ (B[i,1,k,2,t1[y0]]+B[i,2,k,2,t1[y0]]+S[i,1,k,2,t1[y0]]);
+       ////////////////////////////////
+       //////////////////////////////// FIX THIS WITH QUEST DATA
+       ////////////////////////////////
+    pr_rec_tested[i,k,y0] = 0.5*(test_nums[i,k,1,y0]+test_nums[i,k,2,y0])/ (B[i,1,k,1,t1[y0]]+B[i,2,k,1,t1[y0]]+B[i,1,k,2,t1[y0]]+B[i,2,k,2,t1[y0]]+S[i,1,k,1,t1[y0]]+S[i,1,k,2,t1[y0]]);
+    pr_rec_tested_r1[i,k,y0] = 0.5*(test_nums[i,k,1,y0])/ (B[i,1,k,1,t1[y0]]+B[i,2,k,1,t1[y0]]+S[i,1,k,1,t1[y0]]);
+    pr_rec_tested_r2[i,k,y0] = 0.5*(test_nums[i,k,2,y0])/ (B[i,1,k,2,t1[y0]]+B[i,2,k,2,t1[y0]]+S[i,1,k,2,t1[y0]]);
        }
      }
    }
@@ -724,7 +729,7 @@ model {
   // 
 
   mu_test ~normal(d_testvol[1]*0.05, d_testvol[1]*0.01);
-
+  coverage ~beta(beta_testcov[1], beta_testcov[2]);
   
   for (i in 1:5){
   mu_hd[1,i] ~ normal(d_hiv_diag[i,14,1]*0.05, d_hiv_diag[i,14,1]*0.01);
@@ -782,9 +787,9 @@ for (i in 1:3){
 }
 
 // testing volume
-  d_testvol[1] ~ normal(testvol_est[1], mu_test);
-  d_testvol[2] ~ normal(testvol_est[2], mu_test);
-  d_testvol[3] ~ normal(testvol_est[3], mu_test);
+  d_testvol[1] ~ normal(testvol_est[1]*coverage, mu_test);
+  d_testvol[2] ~ normal(testvol_est[2]*coverage, mu_test);
+  d_testvol[3] ~ normal(testvol_est[3]*coverage, mu_test);
 
 // CURRENTLY NOT CALIBRATING TO DIAGNOSES OR PLHIV
 //  // hiv diagnoses and current known PHIV, HIV deaths
@@ -813,6 +818,7 @@ generated quantities {
   real Ntot[ag,s,timespan]; 
   real  Ntot_risk[ag,s,r,timespan];
   real  Nrisk_prop[ag,s,r,timespan];
+  real test_totals[5];
  // real<lower = 0> ever_tested[4,10];
 //  real rec_tested[ag,s,timespan];
  // real test_out;
@@ -820,6 +826,13 @@ generated quantities {
   
  // test_out = test;
  // v_out = dmsmv;
+ 
+ test_totals[1] = sum(test_reas_f[,1,1])+sum(test_reas_f[,1,2])+sum(test_reas_mw[,1,1])+sum(test_reas_mw[,1,2])+sum(test_reas_mm[,1,1])+sum(test_reas_mm[,1,2]) ; // screening  
+ test_totals[2] = sum(test_reas_f[,2,1])+sum(test_reas_f[,2,2])+sum(test_reas_mw[,2,1])+sum(test_reas_mw[,2,2])+sum(test_reas_mm[,2,1])+sum(test_reas_mm[,2,2]) ; // plhiv 
+ test_totals[3] = sum(test_reas_f[,3,1])+sum(test_reas_f[,3,2])+sum(test_reas_mw[,3,1])+sum(test_reas_mw[,3,2])+sum(test_reas_mm[,3,1])+sum(test_reas_mm[,3,2]) ; // prep 
+ test_totals[4] = sum(test_reas_f[,4,1])+sum(test_reas_f[,4,2]) ; // pregnancy 
+ test_totals[5] = sum(test_reas_f[,5,1])+sum(test_reas_f[,5,2])+sum(test_reas_mw[,4,1])+sum(test_reas_mw[,4,2])+sum(test_reas_mm[,4,1])+sum(test_reas_mm[,4,2]) ; // pwid  
+
   
   for (y0 in 2:(timespan+1)){
     for (i in 1:ag){
