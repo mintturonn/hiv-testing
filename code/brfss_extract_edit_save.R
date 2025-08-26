@@ -13,6 +13,7 @@ brfss.col2017 = read_excel(paste0(path, "col_names_manual.xlsx"), sheet="2017")
 brfss.col2018 = read_excel(paste0(path, "col_names_manual.xlsx"), sheet="2018")
 brfss.col2019 = read_excel(paste0(path, "col_names_manual.xlsx"), sheet="2019")
 brfss.col2020 = read_excel(paste0(path, "col_names_manual.xlsx"), sheet="2020")
+brfss.col2020 = read_excel(paste0(path, "col_names_manual.xlsx"), sheet="2020")
 
 
 # Note that the variable layout includes group fields that encompass multiple subsequent columns and 
@@ -23,8 +24,11 @@ brfss.col2020 = read_excel(paste0(path, "col_names_manual.xlsx"), sheet="2020")
 
 brfss.col2020$File_Width = sapply(1:nrow(brfss.col2020), function(y) ifelse(y < nrow(brfss.col2020), 
                                                                             brfss.col2020$`Starting Column`[y + 1] - brfss.col2020$`Starting Column`[y], 1))
-
 brfss.col2020 = brfss.col2020[brfss.col2020$`Field Length` > 0,]
+
+brfss.col2021$File_Width = sapply(1:nrow(brfss.col2021), function(y) ifelse(y < nrow(brfss.col2021), 
+                                                                            brfss.col2021$`Starting Column`[y + 1] - brfss.col2021$`Starting Column`[y], 1))
+brfss.col2021 = brfss.col2021[brfss.col2021$`Field Length` > 0,]
 
 
 # data 

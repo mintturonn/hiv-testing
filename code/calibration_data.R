@@ -87,23 +87,23 @@ read.csv(here("data/AtlasPlusTableData_national_women_hiv_year.csv"), skip=11)  
   mutate(rate = diagnoses / population) -> hivdata_f
 
 
-d_popsize <- d_hivmortality_all <- d_hivdiagnoses_all <- d_hivknownprev_all <- d_hivdiagnrate_all <- array(NA, dim = c(5, timespan-11, gen_groups))
+d_popsize <- d_hivmortality_all <- d_hivdiagnoses_all <- d_hivknownprev_all <- d_hivdiagnrate_all <- array(NA, dim = c(5, timespan-12, gen_groups))
 
-d_hivmortality_all[,,1] <- t(matrix(hivdata_f$deaths,nrow=timespan-11))
-d_hivmortality_all[,,2] <- t(matrix(hivdata_m$deaths[hivdata_m$msm==0],nrow=timespan-11))
-d_hivmortality_all[,,3] <- t(matrix(hivdata_m$deaths[hivdata_m$msm==1],nrow=timespan-11))
+d_hivmortality_all[,,1] <- t(matrix(hivdata_f$deaths,nrow=timespan-12))
+d_hivmortality_all[,,2] <- t(matrix(hivdata_m$deaths[hivdata_m$msm==0],nrow=timespan-12))
+d_hivmortality_all[,,3] <- t(matrix(hivdata_m$deaths[hivdata_m$msm==1],nrow=timespan-12))
 
-d_hivdiagnoses_all[,,1] <- t(matrix(hivdata_f$diagnoses,nrow=timespan-11))
-d_hivdiagnoses_all[,,2] <- t(matrix(hivdata_m$diagnoses[hivdata_m$msm==0],nrow=timespan-11))
-d_hivdiagnoses_all[,,3] <- t(matrix(hivdata_m$diagnoses[hivdata_m$msm==1],nrow=timespan-11))
+d_hivdiagnoses_all[,,1] <- t(matrix(hivdata_f$diagnoses,nrow=timespan-12))
+d_hivdiagnoses_all[,,2] <- t(matrix(hivdata_m$diagnoses[hivdata_m$msm==0],nrow=timespan-12))
+d_hivdiagnoses_all[,,3] <- t(matrix(hivdata_m$diagnoses[hivdata_m$msm==1],nrow=timespan-12))
 
-d_hivdiagnrate_all[,,1] <- t(matrix(hivdata_f$rate,nrow=timespan-11))
-d_hivdiagnrate_all[,,2] <- t(matrix(hivdata_m$rate[hivdata_m$msm==0],nrow=timespan-11))
-d_hivdiagnrate_all[,,3] <- t(matrix(hivdata_m$rate[hivdata_m$msm==1],nrow=timespan-11))
+d_hivdiagnrate_all[,,1] <- t(matrix(hivdata_f$rate,nrow=timespan-12))
+d_hivdiagnrate_all[,,2] <- t(matrix(hivdata_m$rate[hivdata_m$msm==0],nrow=timespan-12))
+d_hivdiagnrate_all[,,3] <- t(matrix(hivdata_m$rate[hivdata_m$msm==1],nrow=timespan-12))
 
-d_hivknownprev_all[,,1] <- t(matrix(hivdata_f$prevalence,nrow=timespan-11))
-d_hivknownprev_all[,,2] <- t(matrix(hivdata_m$prevalence[hivdata_m$msm==0],nrow=timespan-11))
-d_hivknownprev_all[,,3] <- t(matrix(hivdata_m$prevalence[hivdata_m$msm==1],nrow=timespan-11))
+d_hivknownprev_all[,,1] <- t(matrix(hivdata_f$prevalence,nrow=timespan-12))
+d_hivknownprev_all[,,2] <- t(matrix(hivdata_m$prevalence[hivdata_m$msm==0],nrow=timespan-12))
+d_hivknownprev_all[,,3] <- t(matrix(hivdata_m$prevalence[hivdata_m$msm==1],nrow=timespan-12))
 
 d_popsize[,,1] <- matrix(10^6,5,14) 
 d_popsize[,,2] <- matrix(10^6,5,14) 

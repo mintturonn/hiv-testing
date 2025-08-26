@@ -60,8 +60,8 @@ read.csv(here("data/AtlasPlusTableData_population_2000_2022.csv"), skip=7)  %>%
             hivt_est = colMeans(hivt1)[3]*birth_rate,
             hivt_ul = colMeans(hivt1)[4]*birth_rate, 
             hivt_sd = (hivt_est-hivt_ll)/1.96,
-            alpha = betavars(birth_rate, birth_rate*0.0001)$alpha,
-            beta = betavars(birth_rate, birth_rate*0.0001)$beta )  %>%
+            alpha = betavars(birth_rate, birth_rate/2000)$alpha,
+            beta = betavars(birth_rate, birth_rate/2000)$beta )  %>%
     arrange(age, year) ->  birth_rate_wtest_all
   
   birth_rate_wtest_all[birth_rate_wtest_all$year ==2000 | birth_rate_wtest_all$year ==2022,] -> birth_rate_wtest
@@ -76,6 +76,9 @@ read.csv(here("data/AtlasPlusTableData_population_2000_2022.csv"), skip=7)  %>%
   #   arrange(age, year)-> birth_rate_wtest
 
 write.csv(birth_rate_wtest, here("data/birth_rate_wtest.csv"), row.names = FALSE) 
+write.csv(birth_rate_wtest_all, here("data/prg_data_ests.csv"), row.names = FALSE) 
+
+
 
 hiv_testing_pregn <- round(get.gamma.par(c(0.025, 0.5, 0.975), as.vector(c(0.56, 1.4, 2)), show.output = FALSE, tol = 0.0001),3)
 quantile(rgamma(10^6, hiv_testing_pregn[1], hiv_testing_pregn[2]), probs = c(0.025, 0.5, 0.975))

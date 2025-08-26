@@ -54,7 +54,7 @@ prep_use_temp %>%
 data.frame( age =  c("15-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+"),
             women = c(0.29, 0.15, 0.11, 0.07, 0.07, 0.01, 0.0001),
             msw =   c(0.34, 0.19, 0.11, 0.09, 0.06, 0.03, 0.015),
-            msm =   c(0.35, 0.35, 0.35, 0.18, 0.09, 0.045, 0.02)) %>%
+            msm =   c(0.35, 0.35, 0.35, 0.18, 0.18, 0.09, 0.045)) %>%
   pivot_longer(cols = c("msm", "msw", "women"), values_to = "higher_risk", names_to = "transcat") -> risk_pr_long
   
 
@@ -82,10 +82,12 @@ rbind(prep_use_female, prep_use_male) %>%
   select(Sex.x, year, age, transcat, prep_pr, prep_sd) %>%
   pivot_wider(names_from = year, values_from = c(prep_pr, prep_sd), names_prefix = "year_") %>%
   mutate(relrate = prep_pr_year_2017/prep_pr_year_2022,
-         alpha_2022 = betavars(prep_pr_year_2022, prep_sd_year_2022^2)$alpha,
-         beta_2022  = betavars(prep_pr_year_2022, prep_sd_year_2022^2)$beta,
-         alpha_2017rr = betavars(relrate, relrate*0.0001)$alpha,
-         beta_2017rr  = betavars(relrate, relrate*0.0001)$beta)  -> prep_use
+         alpha_2022 = ifelse( transcat=="msm", betavars(prep_pr_year_2022, prep_pr_year_2022/1000)$alpha,
+                              betavars(prep_pr_year_2022, prep_pr_year_2022/10000)$alpha),
+         beta_2022  = ifelse( transcat=="msm", betavars(prep_pr_year_2022, prep_pr_year_2022/1000)$beta,
+                              betavars(prep_pr_year_2022, prep_pr_year_2022/10000)$beta),
+         alpha_2017rr = betavars(relrate, relrate/500)$alpha,
+         beta_2017rr  = betavars(relrate, relrate/500)$beta)  -> prep_use
 
 # 1999 = 2000 and 2023 = 2022
 # 
@@ -97,6 +99,15 @@ rbind(prep_use_female, prep_use_male) %>%
 #   arrange(transcat, age, year)-> prep_use
 
 write.csv(prep_use, here("data/prep_pr.csv"), row.names = FALSE) 
+
+rbind(prep_use_female, prep_use_male) %>%
+  left_join(risk_pr_long, by = c("transcat", "age")) %>%
+  left_join( rbind(pop_female, pop_male), by = c("transcat", "age", "year")) %>%
+  mutate(pop_hr = higher_risk * population) %>%
+  mutate(prep_pr = cases / pop_hr,
+         prep_sd = sqrt(prep_pr*(1-prep_pr)/pop_hr)) -> prep_use_data_ests
+
+write.csv(prep_use_data_ests, here("data/prep_use_data_ests.csv"), row.names = FALSE) 
 
 ###################################
 # HIV testing
